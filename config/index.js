@@ -11,7 +11,10 @@ const config = {
     DB_HOST: process.env.DB_HOST,
     DB_NAME: process.env.DB_NAME,
     DEBUG: process.env.DEBUG_EXPRESS,
-    CACHE: process.env.CACHE === 'true'
+    CACHE: process.env.CACHE === 'true',
+    POKEMON_BASE_API: process.env.POKEMON_BASE_API,
+    POKEMON_API_LIMIT: process.env.POKEMON_API_LIMIT,
+    POKEMON_ASSETS_BASE_URL: process.env.POKEMON_ASSETS_BASE_URL
 };
 
 module.exports = { config }
