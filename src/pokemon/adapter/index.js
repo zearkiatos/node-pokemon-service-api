@@ -1,5 +1,5 @@
 const { config } = require('../../../config');
-const mapperPokemonResponse = (pokemons, types) => {
+const mapperPokemonResponse = (pokemons) => {
     const pokemonMapped = pokemons.map((pokemon,index) => {
         const id = index + 1;
         const number = ('000' + id).slice(-3);
@@ -9,7 +9,6 @@ const mapperPokemonResponse = (pokemons, types) => {
             id,
             number,
             image: config.POKEMON_ASSETS_BASE_URL + `${number}.png`,
-            types: types.find(type => type.id === id).types
         };
     });
 

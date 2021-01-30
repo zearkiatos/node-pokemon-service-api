@@ -1,12 +1,18 @@
 const axios = require('axios').default;
+const { setupCache } = require('axios-cache-adapter');
 const { config } = require('../../config');
 
+const cache = setupCache({
+    maxAge: 15 * 60 * 1000
+});
+
 const pokemonInstance = axios.create({
-    baseURL: config.POKEMON_BASE_API
-  });
+    baseURL: config.POKEMON_BASE_API,
+    adapter: cache.adapter
+});
 
 const getPokemons = async () => {
-    const pokemons = await pokemonInstance.get('/pokemon',{
+    const pokemons = await pokemonInstance.get('/pokemon', {
         params: {
             limit: config.POKEMON_API_LIMIT
         }

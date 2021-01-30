@@ -44,6 +44,7 @@
     "@hapi/boom": "^9.1.1",
     "@hapi/joi": "^17.1.1",
     "axios": "^0.21.1",
+    "axios-cache-adapter": "^2.5.0",
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
