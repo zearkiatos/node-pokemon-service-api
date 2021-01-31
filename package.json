@@ -1,0 +1,78 @@
+{
+  "name": "pokemon-service-api",
+  "version": "1.0.0",
+  "description": "This is a practice project for in nodejs, this is a web api than consume pokeapi.co, expose pokemon data and integrate with a database to persist the raiting and comments than the user save by pokemons.",
+  "main": "index.js",
+  "scripts": {
+    "deploy": "vercel --prod",
+    "dev": "nodemon index",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "NODE_ENV=production node index",
+    "coverage": "nyc npm run test",
+    "report": "nyc report --reporter=html && open coverage/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zearkiatos/node-pokemon-service-api.git"
+  },
+  "keywords": [
+    "Pokemon",
+    "Pokedex"
+  ],
+  "author": "Pedro Capriles",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zearkiatos/node-pokemon-service-api/issues"
+  },
+  "homepage": "https://github.com/zearkiatos/node-pokemon-service-api#readme",
+  "devDependencies": {
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "^7.2.0",
+    "eslint-plugin-prettier": "^3.3.1",
+    "husky": "^4.3.8",
+    "lint-staged": "^10.5.3",
+    "mocha": "^8.2.1",
+    "nodemon": "^2.0.7",
+    "nyc": "^15.1.0",
+    "pre-commit": "^1.2.2",
+    "prettier": "^2.2.1",
+    "proxyquire": "^2.1.3",
+    "rewire": "^5.0.0",
+    "sinon": "^9.2.4",
+    "supertest": "^6.1.1"
+  },
+  "dependencies": {
+    "@hapi/boom": "^9.1.1",
+    "@hapi/joi": "^17.1.1",
+    "axios": "^0.21.1",
+    "axios-cache-adapter": "^2.5.0",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^4.4.1",
+    "mongoose": "^5.11.14",
+    "morgan": "^1.10.0",
+    "multer": "^1.4.2"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    },
+    "lint-staged": {
+      "*.js": "eslint --cache --fix"
+    },
+    "nodemonConfig": {
+      "ext": "js,html,css,json"
+    },
+    "nyc": {
+      "all": true,
+      "include": [
+        "src/routes",
+        "src/services",
+        "src/lib",
+        "src/utils"
+      ]
+    }
+  }
+}

@@ -1,0 +1,37 @@
+version: "3.7"
+
+services:
+  db:
+    container_name: pokemon-mongo-db
+    build:
+      context: .
+      dockerfile: mongo.Dockerfile
+    env_file:
+      - mongo.env
+    volumes:
+      - "./mongo-volume:/data/db"
+    ports:
+      - "27018:27017"
+    networks:
+      mongonetwork:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pokemon-service-api
+    env_file:
+        - .env.development
+    volumes: 
+      - ".:/app"
+    depends_on: 
+      - db
+    links:
+      - db
+    networks:
+      mongonetwork:
+    ports:
+      - "3001:3000"
+    tty: true
+networks:
+  mongonetwork:
+    driver: bridge
