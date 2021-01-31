@@ -1,6 +1,6 @@
 const repository = require('../repository');
 
-function getComments(filter) {
+function getRatings(filter) {
     return new Promise((resolve, reject) => {
         try {
             const result = repository.get(filter);
@@ -12,10 +12,10 @@ function getComments(filter) {
     });
 }
 
-function addComment(comment) {
+function addRating(rating) {
     return new Promise((resolve, reject) => {
         try {
-            const result = repository.add(comment);
+            const result = repository.add(rating);
             resolve(result);
         }
         catch (e) {
@@ -25,4 +25,4 @@ function addComment(comment) {
     });
 }
 
-module.exports = { getComments, addComment }
+module.exports = { getRatings, addRating }
