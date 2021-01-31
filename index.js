@@ -8,7 +8,10 @@ const { config } = require('./config');
 const { logErrors, errorHandler, wrapErrors } = require('./src/middleware/errorHandler');
 const notFoundHandler = require('./src/middleware/notFoundHandler');
 const router = require('./src/routes');
+const db = require('./db');
 require('http').Server(app);
+
+db(config.DB_URL);
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

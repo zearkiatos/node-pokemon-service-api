@@ -13,4 +13,4 @@ db.createUser(
         ]
     }
 );
-db.createCollection('pokemons', {autoIndexId: true});
+
