@@ -23,4 +23,22 @@ router.get('/', async function(request, response) {
   }
 });
 
+router.get('/:name', async function(request, response) {
+  try {
+    const { name } = request.params;
+    const pokemon = await pokemonService.getPokemon(name);
+    response.send({
+      statusCode: 200,
+      data: pokemon
+    });
+  }
+  catch(e) {
+    response.send({
+      statusCode: boom.internal,
+      message: e.message,
+      stack: e.stack
+    })
+  }
+});
+
 module.exports = router;
