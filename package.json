@@ -4,6 +4,7 @@
   "description": "This is a practice project for in nodejs, this is a web api than consume pokeapi.co, expose pokemon data and integrate with a database to persist the raiting and comments than the user save by pokemons.",
   "main": "index.js",
   "scripts": {
+    "deploy": "vercel --prod",
     "dev": "nodemon index",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "NODE_ENV=production node index",
