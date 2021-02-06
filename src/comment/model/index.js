@@ -15,7 +15,12 @@ const mySchema = Schema({
         type: String,
         required: true
     },
-    date: Date
+    date: Date,
+    anonymous: {
+        type: Boolean,
+        required: true,
+        default: false
+    }
 });
 
 const model = mongoose.model("Comment", mySchema);
