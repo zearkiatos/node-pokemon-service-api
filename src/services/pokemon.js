@@ -26,7 +26,8 @@ const getPokemon = async (name) => {
 }
 
 const getPokemonEvolution = async (id) => {
-    const pokemon = await pokemonInstance.get(`/evolution-chain/${id}`);
+    const pokemonSpecies = await pokemonInstance.get(`/pokemon-species/${id}`);
+    const pokemon = await axios.get(pokemonSpecies.data.evolution_chain.url);
     return pokemon.data.chain;
 }
 
