@@ -25,7 +25,14 @@ const getPokemon = async (name) => {
     return pokemon.data;
 }
 
+const getPokemonEvolution = async (id) => {
+    const pokemonSpecies = await pokemonInstance.get(`/pokemon-species/${id}`);
+    const pokemon = await axios.get(pokemonSpecies.data.evolution_chain.url);
+    return pokemon.data.chain;
+}
+
 module.exports = {
     getPokemons,
-    getPokemon
+    getPokemon,
+    getPokemonEvolution
 }
