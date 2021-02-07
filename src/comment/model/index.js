@@ -8,8 +8,7 @@ const mySchema = Schema({
         required: true
     },
     user: {
-        type: String,
-        required: true
+        type: String
     },
     comment: {
         type: String,
