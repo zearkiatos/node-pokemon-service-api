@@ -7,6 +7,7 @@ const mapperTopRatingResponse = (ratings) => {
         return {
             pokemonId: rating._id,
             number,
+            rating: rating.rating
             image: config.POKEMON_ASSETS_BASE_URL + `${number}.png`,
         };
     });
