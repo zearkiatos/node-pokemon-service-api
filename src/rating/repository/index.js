@@ -23,7 +23,35 @@ async function getRatingByPokemon(pokemonId) {
   });
 }
 
+async function getRatingTop(limit) {
+  return new Promise((resolve, reject) => {
+    Model.aggregate([
+      {
+        $group: {
+          _id: "$pokemonId",
+          rating: {$sum: "$rating"}
+        }
+      },
+      {
+        $sort: {
+          rating: -1
+        }
+      },
+      {
+        $limit: limit
+      }
+    ]).exec((error, populated) => {
+        if (error) {
+          reject(error);
+          return false;
+        }
+        resolve(populated);
+      });
+  });
+}
+
 module.exports = {
   add: addRating,
   get: getRatingByPokemon,
+  getTop: getRatingTop
 };
