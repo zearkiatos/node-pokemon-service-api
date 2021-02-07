@@ -12,6 +12,18 @@ function getRatings(filter) {
     });
 }
 
+function getTop(limit) {
+    return new Promise((resolve, reject) => {
+        try {
+            const result = repository.getTop(limit);
+            resolve(result);
+        }
+        catch (e) {
+            reject(e.message);
+        }
+    });
+}
+
 function addRating(rating) {
     return new Promise((resolve, reject) => {
         try {
@@ -25,4 +37,4 @@ function addRating(rating) {
     });
 }
 
-module.exports = { getRatings, addRating }
+module.exports = { getRatings, addRating, getTop }
